@@ -161,7 +161,8 @@ const textArray = [
     'UI/UX Designer',
     'Frontend Developer',
     'Backend Developer',
-    'Full Stack Developer'
+    'Full Stack Developer',
+    'Cyber Security'
 ];
 const typingDelay = 100;
 const erasingDelay = 50;
@@ -615,5 +616,279 @@ function activateEasterEgg() {
 }
 
 console.log('%c🚀 Portfolio Website', 'font-size: 20px; font-weight: bold; color: #6366f1;');
-console.log('%cMade with ❤️ by Your Name', 'font-size: 12px; color: #8b5cf6;');
+console.log('%cMade with ❤️ by TRÍ DEV', 'font-size: 12px; color: #8b5cf6;');
 console.log('%cTip: Try the Konami Code! ⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️BA', 'font-size: 10px; color: #94a3b8;');
+
+// ==================== LOADING SCREEN ====================
+window.addEventListener('load', () => {
+    const loadingScreen = document.querySelector('.loading-screen');
+
+    setTimeout(() => {
+        loadingScreen.classList.add('hidden');
+
+        // Remove from DOM after transition
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+        }, 500);
+    }, 1000); // Show loading for at least 1 second
+});
+
+// ==================== THEME TOGGLE ====================
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+
+// Check for saved theme preference or default to dark mode
+const savedTheme = localStorage.getItem('theme') || 'dark';
+if (savedTheme === 'light') {
+    body.classList.add('light-mode');
+}
+
+themeToggle.addEventListener('click', () => {
+    // Add switching animation
+    themeToggle.classList.add('switching');
+
+    // Toggle theme
+    body.classList.toggle('light-mode');
+
+    // Save preference
+    const currentTheme = body.classList.contains('light-mode') ? 'light' : 'dark';
+    localStorage.setItem('theme', currentTheme);
+
+    // Remove animation class
+    setTimeout(() => {
+        themeToggle.classList.remove('switching');
+    }, 600);
+
+    // Optional: Update particles color based on theme
+    if (typeof particlesJS !== 'undefined') {
+        updateParticlesTheme(currentTheme);
+    }
+});
+
+function updateParticlesTheme(theme) {
+    const particleColor = theme === 'light' ? '#6366f1' : '#6366f1';
+    // You can update particles color here if needed
+}
+
+// ==================== TESTIMONIALS SLIDER ====================
+const testimonialsSlider = document.querySelector('.testimonials-slider');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+
+if (testimonialsSlider && prevBtn && nextBtn) {
+    let currentSlide = 0;
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    const totalSlides = testimonialCards.length;
+
+    function updateSlider() {
+        const cardWidth = testimonialCards[0].offsetWidth;
+        const gap = 32; // 2rem gap
+        const scrollAmount = (cardWidth + gap) * currentSlide;
+        testimonialsSlider.scrollTo({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+
+    nextBtn.addEventListener('click', () => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSlider();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateSlider();
+    });
+
+    // Auto slide
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSlider();
+    }, 5000);
+
+    // Touch/Swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    testimonialsSlider.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    testimonialsSlider.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        if (touchEndX < touchStartX - 50) {
+            // Swipe left
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+        if (touchEndX > touchStartX + 50) {
+            // Swipe right
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+    }
+}
+
+// ==================== ANIMATE NEW SECTIONS ON SCROLL ====================
+const achievementCards = document.querySelectorAll('.achievement-card');
+const serviceCards = document.querySelectorAll('.service-card');
+const blogCards = document.querySelectorAll('.blog-card');
+
+const newSectionsObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }, index * 100);
+            newSectionsObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+// Initialize animations for new sections
+[...achievementCards, ...serviceCards, ...blogCards].forEach(element => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(30px)';
+    element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    newSectionsObserver.observe(element);
+});
+
+// ==================== DOWNLOAD CV FUNCTION ====================
+function downloadCV() {
+    // Get CV path from config or use default
+    const cvPath = typeof CONFIG !== 'undefined' && CONFIG.personal ?
+                   CONFIG.personal.cvFile :
+                   'assets/cv/your-cv.pdf';
+
+    // Create temporary link and trigger download
+    const link = document.createElement('a');
+    link.href = cvPath;
+    link.download = 'CV_YourName.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+// Add event listener to CV download buttons
+document.querySelectorAll('a[href="#"]').forEach(link => {
+    if (link.textContent.includes('Tải CV') || link.textContent.includes('Download CV')) {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            downloadCV();
+        });
+    }
+});
+
+// ==================== STATS COUNTER ANIMATION ====================
+function animateStats() {
+    const stats = document.querySelectorAll('.stat-number');
+
+    stats.forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-target'));
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
+
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                stat.textContent = target;
+                clearInterval(timer);
+            } else {
+                stat.textContent = Math.floor(current);
+            }
+        }, 16);
+    });
+}
+
+// ==================== DYNAMIC CONTENT LOADING FROM CONFIG ====================
+function loadConfigData() {
+    if (typeof CONFIG === 'undefined') return;
+
+    // Update personal info
+    if (CONFIG.personal) {
+        // Update name if element exists
+        const nameElement = document.querySelector('.name');
+        if (nameElement && CONFIG.personal.name) {
+            nameElement.textContent = CONFIG.personal.name;
+        }
+
+        // Update other personal info
+        // This is just a basic example, you can expand it
+    }
+
+    // Update roles for typing effect
+    if (CONFIG.roles && CONFIG.roles.length > 0) {
+        // The typing effect will use these roles
+        // You might want to integrate this with the existing typing code
+    }
+}
+
+// Call this on page load
+document.addEventListener('DOMContentLoaded', loadConfigData);
+
+// ==================== KEYBOARD SHORTCUTS ====================
+document.addEventListener('keydown', (e) => {
+    // Ctrl/Cmd + K: Focus search (if you add search)
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        // Add search functionality here
+    }
+
+    // Ctrl/Cmd + /: Toggle theme
+    if ((e.ctrlKey || e.metaKey) && e.key === '/') {
+        e.preventDefault();
+        themeToggle.click();
+    }
+
+    // ESC: Close mobile menu
+    if (e.key === 'Escape') {
+        navMenu.classList.remove('active');
+    }
+});
+
+// ==================== PRINT STYLES ====================
+window.addEventListener('beforeprint', () => {
+    // Expand all collapsed sections before printing
+    document.body.classList.add('printing');
+});
+
+window.addEventListener('afterprint', () => {
+    document.body.classList.remove('printing');
+});
+
+// ==================== PERFORMANCE MONITORING ====================
+if (window.performance && window.performance.timing) {
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const perfData = window.performance.timing;
+            const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+            console.log(`⚡ Page loaded in ${pageLoadTime}ms`);
+        }, 0);
+    });
+}
+
+// ==================== PREVENT ANIMATION ON PAGE LOAD ====================
+document.addEventListener('DOMContentLoaded', () => {
+    // Remove preload class after a short delay
+    document.body.classList.add('preload');
+
+    setTimeout(() => {
+        document.body.classList.remove('preload');
+    }, 100);
+});
+
+// ==================== AUTO-UPDATE COPYRIGHT YEAR ====================
+const currentYear = new Date().getFullYear();
+const copyrightElements = document.querySelectorAll('.footer-bottom p');
+copyrightElements.forEach(el => {
+    el.innerHTML = el.innerHTML.replace('2024', currentYear);
+});

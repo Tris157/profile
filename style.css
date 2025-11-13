@@ -154,6 +154,16 @@ section {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.hero-text {
+    order: 1;
+}
+
+.hero-image {
+    order: 2;
 }
 
 .hero-text h1 {
@@ -309,11 +319,13 @@ section {
 
 .avatar-container {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 auto;
 }
 
 .avatar {
@@ -1233,26 +1245,24 @@ textarea.form-control {
     }
 
     .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .hero-image {
-        order: -1;
+        gap: 2rem;
     }
 
     .avatar-container {
-        width: 300px;
-        height: 300px;
-        margin: 0 auto;
+        width: 280px;
+        height: 280px;
     }
 
-    .hero-buttons {
-        justify-content: center;
+    .name {
+        font-size: 2.5rem;
     }
 
-    .social-links {
-        justify-content: center;
+    .typing-text {
+        font-size: 1.5rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
     }
 
     .about-content {

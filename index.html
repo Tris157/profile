@@ -3,13 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Your Name</title>
+    <title>Portfolio - TRÍ DEV</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loader">
+            <div class="loader-ring"></div>
+            <div class="loader-ring"></div>
+            <div class="loader-ring"></div>
+            <div class="loader-text">Loading...</div>
+        </div>
+    </div>
+
     <!-- Particle Background -->
     <div id="particles-js"></div>
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-sun theme-toggle-icon sun-icon"></i>
+        <i class="fas fa-moon theme-toggle-icon moon-icon"></i>
+    </button>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -39,14 +57,14 @@
             <div class="hero-text">
                 <h1 class="glitch" data-text="Xin chào, tôi là">Xin chào, tôi là</h1>
                 <h2 class="name-title">
-                    <span class="name">TÊN BẠN</span>
+                    <span class="name">Bá Trí</span>
                 </h2>
                 <h3 class="typing-text">
                     <span class="typed-text"></span>
                     <span class="cursor">&nbsp;</span>
                 </h3>
                 <p class="hero-description">
-                    Mô tả ngắn gọn về bản thân bạn, điền vào đây những gì bạn muốn giới thiệu về mình
+                    Tôi là người đam mê công nghệ, luôn tò mò và muốn hiểu vấn đề đến tận gốc. Tôi chủ động học hỏi, chịu khó làm việc và đã tự phát triển nhiều dự án thực tế như hệ thống Smart Traffic Monitoring. Phong cách của tôi thẳng thắn, hài hước nhưng quyết đoán, luôn muốn làm nhanh – làm gọn – làm hiệu quả. Tôi có khả năng đa nhiệm tốt, làm việc tỉ mỉ, cẩn thận và luôn sẵn sàng cải thiện bản thân mỗi ngày.
                 </p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">
@@ -535,6 +553,62 @@
         </div>
     </section>
 
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Thành tựu & Chứng chỉ</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-image">
+                        <img src="https://via.placeholder.com/200" alt="Certificate">
+                        <div class="achievement-badge">
+                            <i class="fas fa-award"></i>
+                        </div>
+                    </div>
+                    <div class="achievement-info">
+                        <h3 class="achievement-title">AWS Certified Developer</h3>
+                        <p class="achievement-issuer">Amazon Web Services</p>
+                        <p class="achievement-date">2023</p>
+                        <a href="#" class="achievement-link">Xem chứng chỉ <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-image">
+                        <img src="https://via.placeholder.com/200" alt="Certificate">
+                        <div class="achievement-badge">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                    </div>
+                    <div class="achievement-info">
+                        <h3 class="achievement-title">Google Analytics Certified</h3>
+                        <p class="achievement-issuer">Google</p>
+                        <p class="achievement-date">2023</p>
+                        <a href="#" class="achievement-link">Xem chứng chỉ <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-image">
+                        <img src="https://via.placeholder.com/200" alt="Trophy">
+                        <div class="achievement-badge">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                    </div>
+                    <div class="achievement-info">
+                        <h3 class="achievement-title">Hackathon Winner</h3>
+                        <p class="achievement-issuer">Tech Event 2023</p>
+                        <p class="achievement-date">2023</p>
+                        <a href="#" class="achievement-link">Xem thêm <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
@@ -649,6 +723,7 @@
     </button>
 
     <!-- Scripts -->
+    <script src="config.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
 </body>
