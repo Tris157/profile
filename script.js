@@ -457,15 +457,16 @@ interactiveElements.forEach(element => {
 });
 
 // ==================== PARALLAX EFFECT ====================
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.hero-image, .floating-card');
+// Disabled parallax effect for avatar stability
+// window.addEventListener('scroll', () => {
+//     const scrolled = window.pageYOffset;
+//     const parallaxElements = document.querySelectorAll('.hero-image, .floating-card');
 
-    parallaxElements.forEach(element => {
-        const speed = 0.5;
-        element.style.transform = `translateY(${scrolled * speed}px)`;
-    });
-});
+//     parallaxElements.forEach(element => {
+//         const speed = 0.5;
+//         element.style.transform = `translateY(${scrolled * speed}px)`;
+//     });
+// });
 
 // ==================== TECH STACK ANIMATION ====================
 const techIcons = document.querySelectorAll('.tech-icon');
@@ -498,7 +499,7 @@ function animateCounter(element, target, duration) {
 }
 
 // ==================== LAZY LOADING IMAGES ====================
-const images = document.querySelectorAll('img');
+const images = document.querySelectorAll('img:not(.avatar)'); // Exclude avatar from lazy loading
 const imageObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -623,14 +624,9 @@ console.log('%cTip: Try the Konami Code! ⬆️⬆️⬇️⬇️⬅️➡️⬅
 window.addEventListener('load', () => {
     const loadingScreen = document.querySelector('.loading-screen');
 
-    setTimeout(() => {
-        loadingScreen.classList.add('hidden');
-
-        // Remove from DOM after transition
-        setTimeout(() => {
-            loadingScreen.style.display = 'none';
-        }, 500);
-    }, 1000); // Show loading for at least 1 second
+    // Hide immediately without delay
+    loadingScreen.classList.add('hidden');
+    loadingScreen.style.display = 'none';
 });
 
 // ==================== THEME TOGGLE ====================

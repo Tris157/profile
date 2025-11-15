@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la \"d:\\A WEB\\profile tridev\\assets\\images\"\" 2>&1 || dir \"d:A WEBprofile tridevassetsimages\"\")",
+      "Bash(dir:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

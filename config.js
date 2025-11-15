@@ -7,11 +7,11 @@ const CONFIG = {
         name: "Bá Trí",
         firstName: "Tên",
         lastName: "Họ",
-        dateOfBirth: "DD/MM/YYYY",
+        dateOfBirth: "15/07/2008",
         location: "Thành phố, Việt Nam",
         email: "your.email@example.com",
         phone: "+84 xxx xxx xxx",
-        avatar: "https://via.placeholder.com/300", // Link ảnh avatar
+        avatar: "assets/images/avatar.jpg", // Link ảnh avatar
         aboutImage: "https://via.placeholder.com/400", // Link ảnh trong about section
         description: "Mô tả ngắn gọn về bản thân bạn, đam mê, và những gì bạn đang làm...",
         cvFile: "assets/cv/your-cv.pdf" // Đường dẫn file CV
