@@ -201,8 +201,15 @@ section {
 }
 
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }
 
 .hero-description {
@@ -303,8 +310,15 @@ section {
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
 }
 
 .card-content {
@@ -353,8 +367,13 @@ section {
 }
 
 @keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* ==================== SCROLL INDICATOR ==================== */
@@ -367,8 +386,15 @@ section {
 }
 
 @keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(10px); }
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(10px);
+    }
 }
 
 .mouse {
@@ -393,8 +419,15 @@ section {
 }
 
 @keyframes scroll {
-    0% { opacity: 1; top: 8px; }
-    100% { opacity: 0; top: 25px; }
+    0% {
+        opacity: 1;
+        top: 8px;
+    }
+
+    100% {
+        opacity: 0;
+        top: 25px;
+    }
 }
 
 /* ==================== GLITCH EFFECT ==================== */
@@ -426,19 +459,51 @@ section {
 }
 
 @keyframes glitch-1 {
-    0%, 100% { transform: translate(0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(-2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(2px, -2px); }
+
+    0%,
+    100% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+    }
 }
 
 @keyframes glitch-2 {
-    0%, 100% { transform: translate(0); }
-    20% { transform: translate(2px, 2px); }
-    40% { transform: translate(2px, -2px); }
-    60% { transform: translate(-2px, 2px); }
-    80% { transform: translate(-2px, -2px); }
+
+    0%,
+    100% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(2px, 2px);
+    }
+
+    40% {
+        transform: translate(2px, -2px);
+    }
+
+    60% {
+        transform: translate(-2px, 2px);
+    }
+
+    80% {
+        transform: translate(-2px, -2px);
+    }
 }
 
 /* ==================== SECTION HEADERS ==================== */
@@ -477,7 +542,7 @@ section {
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: -30px 0 0 var(--primary-color),
-                30px 0 0 var(--primary-color);
+        30px 0 0 var(--primary-color);
 }
 
 /* ==================== ABOUT SECTION ==================== */
@@ -647,8 +712,13 @@ section {
 }
 
 @keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 /* ==================== TECH STACK ==================== */
@@ -904,8 +974,15 @@ section {
 }
 
 @keyframes pulse {
-    0%, 100% { box-shadow: var(--shadow-glow); }
-    50% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.8); }
+
+    0%,
+    100% {
+        box-shadow: var(--shadow-glow);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(99, 102, 241, 0.8);
+    }
 }
 
 .timeline-content {
@@ -988,7 +1065,7 @@ section {
     color: var(--primary-color);
 }
 
-.contact-info > p {
+.contact-info>p {
     color: var(--gray-text);
     margin-bottom: 2rem;
 }
@@ -1110,7 +1187,7 @@ section {
     transition: color 0.3s ease;
 }
 
-.form-control:focus + .form-icon {
+.form-control:focus+.form-icon {
     color: var(--primary-color);
 }
 
@@ -1222,6 +1299,114 @@ textarea.form-control {
 .back-to-top:hover {
     transform: translateY(-5px);
     box-shadow: 0 0 30px rgba(99, 102, 241, 0.8);
+}
+
+/* ==================== ACHIEVEMENTS SECTION ==================== */
+.achievements {
+    background: rgba(30, 41, 59, 0.3);
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.achievement-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.achievement-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.achievement-icon {
+    width: 70px;
+    height: 70px;
+    min-width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    box-shadow: var(--shadow-glow);
+}
+
+.achievement-icon.gold {
+    background: linear-gradient(135deg, #ffd700, #ffb700);
+    color: #1a1a1a;
+}
+
+.achievement-icon.silver {
+    background: linear-gradient(135deg, #c0c0c0, #a0a0a0);
+    color: #1a1a1a;
+}
+
+.achievement-icon.bronze {
+    background: linear-gradient(135deg, #cd7f32, #b87333);
+    color: #fff;
+}
+
+.achievement-icon.special {
+    background: var(--gradient-1);
+    color: #fff;
+}
+
+.achievement-info {
+    flex: 1;
+}
+
+.achievement-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--light-text);
+}
+
+.achievement-issuer {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.achievement-date {
+    color: var(--gray-text);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.achievement-desc {
+    color: var(--gray-text);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Timeline Improvements */
+.timeline-org {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content h3 {
+    font-size: 1.3rem;
+    color: var(--light-text);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+    color: var(--gray-text);
+    line-height: 1.7;
 }
 
 /* ==================== RESPONSIVE DESIGN ==================== */
